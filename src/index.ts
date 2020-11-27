@@ -50,10 +50,7 @@ async function getWeather() {
 
     // weatherDisplay.style.display = "block";
     scaleToggleContainer.style.display = "block";
-    // weatherCardsContainer.appendChild(weatherDisplay);
 
-    // cities.push(city);
-    // save();
     console.log(data);
   } catch (error) {
     console.log(error);
@@ -88,12 +85,13 @@ function displayCards() {
     .join("");
 }
 
-supBro("Michael");
+supBro("Matt");
 
 input.addEventListener("keyup", () => {
   getWeather();
 });
-
 scaleSwitch.addEventListener("click", changeScale);
 
-export { scaleSwitch };
+const temperature = [...Array.from(document.querySelectorAll(".temperature"))];
+
+export { scaleSwitch, temperature };

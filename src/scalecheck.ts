@@ -1,10 +1,4 @@
-import { scaleSwitch } from "./index";
-
-const temperature = [
-  ...Array.from(document.querySelectorAll<HTMLElement>(".temperature")),
-];
-
-console.log(temperature);
+import { scaleSwitch, temperature } from "./index";
 
 function changeScale(): void {
   if (scaleSwitch.checked) {
@@ -15,15 +9,17 @@ function changeScale(): void {
 }
 
 function toggleFahrenheit(): void {
-  temperature.innerHTML =
-    Math.round((5 / 9) * (parseInt(temperature.innerHTML) - 32)).toString() +
-    "&deg";
+  temperature.map((temp: any) => {
+    temp.innerHTML =
+      Math.round((5 / 9) * (parseInt(temp.innerHTML) - 32)).toString() + "&deg";
+  });
 }
 
 function toggleCelsius(): void {
-  temperature.innerHTML =
-    Math.round((9 / 5) * parseInt(temperature.innerHTML) + 32).toString() +
-    "&deg";
+  temperature.map((temp: any) => {
+    temp.innerHTML =
+      Math.round((9 / 5) * parseInt(temp.innerHTML) + 32).toString() + "&deg";
+  });
 }
 
 export { changeScale };
