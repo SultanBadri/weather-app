@@ -29,9 +29,16 @@ header {
   background: var(--darker);
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-/*********************************  SEARCH BAR ******************************** */
+/*********************************  FORM AND SEARCH BAR ******************************** */
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .search {
   display: flex;
   justify-content: center;
@@ -61,6 +68,15 @@ header {
 .search input:focus {
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   background: white;
+}
+
+input[type="submit"] {
+  height: 4rem;
+  padding: 0 1rem;
+  border-radius: 0.4rem;
+  border: none;
+  color: var(--white);
+  background: var(--pink);
 }
 
 /********************************* WEATHER CARDS CONTAINER ******************************** */
