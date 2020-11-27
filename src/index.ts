@@ -81,15 +81,15 @@ function displayCards() {
     .map((city: any) => {
       return `<div class="display">
       <h2 class="name">${city.city}</h2>
-      <p class="temperature">${city.temperature}</p>
-      <p class="icon">${city.icon}</p>
+      <div class="span-one-line"><p class="temperature">${city.temperature}</p>
+      <p class="icon">${city.icon}</p></div>
       <p class="description">${city.description}</p>
     </div>`;
     })
     .join("");
 }
 
-supBro("Matt");
+supBro("Josh");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();

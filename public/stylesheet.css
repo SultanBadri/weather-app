@@ -1,6 +1,6 @@
 :root {
-  --white: #f9f9f9;
-  --pink: #ff7a8a;
+  --white: #f6f6f6;
+  --green: #00cc77;
   --dark: #113a5d;
   --darker: #062743;
 }
@@ -39,12 +39,6 @@ form {
   align-items: center;
 }
 
-.search {
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
-}
-
 .search-icon {
   position: relative;
   color: #333;
@@ -55,7 +49,7 @@ form {
 
 .search input {
   font-size: 1.4rem;
-  width: calc(25rem + 20vw);
+  width: calc(25rem + 15vw);
   height: 4rem;
   border: none;
   outline: none;
@@ -76,10 +70,23 @@ input[type="submit"] {
   border-radius: 0.4rem;
   border: none;
   color: var(--white);
-  background: var(--pink);
+  background: var(--green);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: #0eb670;
 }
 
 /********************************* WEATHER CARDS CONTAINER ******************************** */
+h1 {
+  text-align: center;
+  padding-top: 5rem;
+  color: var(--green);
+  font-size: 3.2rem;
+}
+
 .weather-cards-container {
   display: flex;
   align-items: center;
@@ -95,9 +102,16 @@ input[type="submit"] {
   margin: 0 2rem 2rem 2rem;
   padding: 2rem;
   border-radius: 2rem;
+  text-align: center;
+}
+
+.span-one-line p {
+  display: inline;
 }
 
 .name {
+  color: rgb(90, 90, 90);
+  font-weight: bolder;
   font-size: 2rem;
   font-weight: lighter;
   padding: 1rem 0;
@@ -110,8 +124,8 @@ input[type="submit"] {
 }
 
 .icon img {
-  width: 6rem;
-  height: 6rem;
+  width: 5rem;
+  height: 5rem;
 }
 
 .description {
@@ -121,8 +135,7 @@ input[type="submit"] {
 
 /*********************************  TEMPERATURE SCALE ******************************** */
 .scale-container {
-  /* display: none; */
-  position: absolute;
+  position: fixed;
   left: 90%;
   bottom: 5%;
 }
@@ -138,7 +151,7 @@ input[type="submit"] {
   width: 4.6rem;
   height: 2.5rem;
   border-radius: 10rem;
-  background: white;
+  background: var(--white);
   position: absolute;
   cursor: pointer;
 }
@@ -158,10 +171,10 @@ input[type="submit"] {
   content: "F";
   position: absolute;
   display: inline-block;
-  color: var(--white);
+  color: var(--green);
   top: 0.4rem;
-  left: 0.6rem;
-  font-size: 1.4rem;
+  left: 0.7rem;
+  font-size: 1.5rem;
   z-index: 1;
 }
 
@@ -172,7 +185,7 @@ input[type="submit"] {
   color: var(--dark);
   top: 0.4rem;
   left: 3rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   z-index: 1;
 }
 
@@ -185,5 +198,5 @@ input[type="submit"] {
 }
 
 #temperature-scale:checked ~ .scale-button::after {
-  color: white;
+  color: var(--green);
 }
