@@ -1,0 +1,165 @@
+:root {
+  --white: #f9f9f9;
+  --pink: #ff7a8a;
+  --dark: #113a5d;
+  --darker: #062743;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  font-family: sans-serif;
+  background-color: var(--dark);
+}
+
+header {
+  height: 8vh;
+  /* background: var(--pink); */
+  display: flex;
+  align-items: center;
+}
+
+/*********************************  SEARCH BAR ******************************** */
+.search {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.search-icon {
+  position: relative;
+  color: #333;
+  right: 3.5rem;
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+.search input {
+  font-size: 1.4rem;
+  width: calc(25rem + 20vw);
+  height: 4rem;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  padding: 0 1rem;
+  background: #f0f0f0;
+  transition: 0.3s ease;
+}
+
+.search input:focus {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  background: white;
+}
+
+/********************************* WEATHER CARDS CONTAINER ******************************** */
+.weather-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5rem;
+}
+
+/******************************** DISPLAY WEATHER INFORMATION ******************************** */
+.display {
+  width: 25rem;
+  background: var(--white);
+  margin: 0 2rem 2rem 2rem;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: lighter;
+  padding: 1rem 0;
+}
+
+.temperature {
+  font-size: 6rem;
+  font-weight: bolder;
+  padding-bottom: 1rem;
+}
+
+.icon img {
+  width: 6rem;
+  height: 6rem;
+}
+
+.description {
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+/*********************************  TEMPERATURE SCALE ******************************** */
+.scale-container {
+  /* display: none; */
+  position: absolute;
+  left: 90%;
+  bottom: 5%;
+}
+
+.scale-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+.scale-button {
+  width: 4.6rem;
+  height: 2.5rem;
+  border-radius: 10rem;
+  background: white;
+  position: absolute;
+  cursor: pointer;
+}
+
+.scale-toggle {
+  width: 1.8rem;
+  height: 1.8rem;
+  background: var(--dark);
+  position: relative;
+  border-radius: 10rem;
+  top: 0.3rem;
+  left: 0.2rem;
+  transition: 0.25s ease-in-out;
+}
+
+.scale-button::before {
+  content: "F";
+  position: absolute;
+  display: inline-block;
+  color: var(--pink);
+  top: 0.4rem;
+  left: 0.6rem;
+  font-size: 1.4rem;
+  z-index: 1;
+}
+
+.scale-button::after {
+  content: "C";
+  position: absolute;
+  display: inline-block;
+  color: var(--pink);
+  top: 0.4rem;
+  left: 3rem;
+  font-size: 1.4rem;
+  z-index: 1;
+}
+
+#temperature-scale:checked ~ label .scale-toggle {
+  transform: translateX(2.4rem);
+}
