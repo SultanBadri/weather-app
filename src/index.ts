@@ -1,7 +1,11 @@
 import { supBro } from "./weather";
 import { changeScale } from "./scalecheck";
 
+const form = <HTMLFormElement>document.querySelector("form");
 const input = <HTMLInputElement>document.querySelector(`input[type="text"]`);
+const submitButton = <HTMLInputElement>(
+  document.querySelector(`input[type="submit"]`)
+);
 const scaleToggleContainer = <HTMLDivElement>(
   document.querySelector(".scale-container")
 );
@@ -87,9 +91,12 @@ function displayCards() {
 
 supBro("Matt");
 
-input.addEventListener("keyup", () => {
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
   getWeather();
+  form.reset();
 });
+
 scaleSwitch.addEventListener("click", changeScale);
 
 const temperature = [...Array.from(document.querySelectorAll(".temperature"))];
