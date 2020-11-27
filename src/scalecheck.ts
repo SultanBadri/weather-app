@@ -1,8 +1,9 @@
 import { scaleSwitch } from "./index";
 
-const temperature: NodeListOf<Element> = document.querySelectorAll(
-  ".temperature"
-);
+const temperature = [
+  ...Array.from(document.querySelectorAll<HTMLElement>(".temperature")),
+];
+
 console.log(temperature);
 
 function changeScale(): void {

@@ -88,7 +88,7 @@ function displayCards() {
     .join("");
 }
 
-supBro("Mathew");
+supBro("Michael");
 
 input.addEventListener("keyup", () => {
   getWeather();
