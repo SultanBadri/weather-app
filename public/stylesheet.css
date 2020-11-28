@@ -105,8 +105,16 @@ h1 {
   text-align: center;
 }
 
-.span-one-line p {
-  display: inline;
+.close {
+  float: right;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background: rgb(211, 211, 211);
 }
 
 .name {
@@ -124,8 +132,8 @@ h1 {
 }
 
 .icon img {
-  width: 5rem;
-  height: 5rem;
+  width: 10rem;
+  height: 10rem;
 }
 
 .description {
@@ -184,7 +192,7 @@ h1 {
   display: inline-block;
   color: var(--dark);
   top: 0.4rem;
-  left: 3rem;
+  left: 2.9rem;
   font-size: 1.5rem;
   z-index: 1;
 }

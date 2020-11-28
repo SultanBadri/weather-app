@@ -3,13 +3,9 @@ import { changeScale } from "./scalecheck";
 
 const form = <HTMLFormElement>document.querySelector("form");
 const input = <HTMLInputElement>document.querySelector(`input[type="text"]`);
-const submitButton = <HTMLInputElement>(
-  document.querySelector(`input[type="submit"]`)
-);
 const scaleToggleContainer = <HTMLDivElement>(
   document.querySelector(".scale-container")
 );
-const weatherDisplay = <HTMLDivElement>document.querySelector(".display");
 const scaleSwitch = <HTMLInputElement>(
   document.querySelector("#temperature-scale")
 );
@@ -73,6 +69,8 @@ function createCityCard(data: any) {
 
   cities.push(cityCard);
   displayCards();
+  scaleSwitch.checked = false;
+  temperatures = [...Array.from(document.querySelectorAll(".temperature"))];
   // save();
 }
 
@@ -80,16 +78,25 @@ function displayCards() {
   weatherCardsContainer.innerHTML = cities
     .map((city: any) => {
       return `<div class="display">
+      <span class="close"><i class="fas fa-times"></i></span>
       <h2 class="name">${city.city}</h2>
-      <div class="span-one-line"><p class="temperature">${city.temperature}</p>
-      <p class="icon">${city.icon}</p></div>
-      <p class="description">${city.description}</p>
+      <p class="icon">${city.icon}</p>
+      <p class="temperature">${city.temperature}</p>
+      <p class="description">${city.description.toUpperCase()}</p>
     </div>`;
     })
     .join("");
+  const closeIcons = [...Array.from(document.querySelectorAll(".close"))];
+  const weatherDisplay = [...Array.from(document.querySelectorAll(".display"))];
+  closeIcons.forEach((icon) =>
+    icon.addEventListener("click", (e) => {
+      const target = e.target as Element;
+      target.remove();
+    })
+  );
 }
 
-supBro("Josh");
+supBro("Mike");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -99,6 +106,6 @@ form.addEventListener("submit", (e) => {
 
 scaleSwitch.addEventListener("click", changeScale);
 
-const temperature = [...Array.from(document.querySelectorAll(".temperature"))];
+let temperatures = [...Array.from(document.querySelectorAll(".temperature"))];
 
-export { scaleSwitch, temperature };
+export { scaleSwitch, temperatures };
