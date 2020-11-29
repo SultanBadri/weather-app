@@ -1,4 +1,4 @@
-import { supBro } from "./weather";
+import { toggleErrorModal, modal, overlay, modalOpen } from "./modal";
 import { changeScale } from "./scalecheck";
 
 const form = <HTMLFormElement>document.querySelector("form");
@@ -52,8 +52,8 @@ async function getWeather() {
     scaleToggleContainer.style.display = "block";
 
     console.log(data);
-  } catch (error) {
-    console.log(error);
+  } catch {
+    toggleErrorModal();
   }
 }
 
@@ -71,14 +71,14 @@ function createCityCard(data: any) {
   displayCards();
   scaleSwitch.checked = false;
   temperatures = [...Array.from(document.querySelectorAll(".temperature"))];
-  // save();
+  save();
 }
 
 function displayCards() {
   weatherCardsContainer.innerHTML = cities
-    .map((city: any) => {
-      return `<div class="display">
-      <span class="close"><i class="fas fa-times"></i></span>
+    .map((city: any, i: number) => {
+      return `<div class="display" data-index=${i}>
+      <span class="close">x</span>
       <h2 class="name">${city.city}</h2>
       <p class="icon">${city.icon}</p>
       <p class="temperature">${city.temperature}</p>
@@ -90,20 +90,20 @@ function displayCards() {
   const weatherDisplay = [...Array.from(document.querySelectorAll(".display"))];
   closeIcons.forEach((icon) =>
     icon.addEventListener("click", (e) => {
-      const target = e.target as Element;
-      target.remove();
+      const target = e.target as HTMLElement;
+      const parent = target.parentElement;
+      parent?.remove();
+      cities.splice(parent?.dataset.index, 1);
+      save();
     })
   );
 }
-
-supBro("Mike");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   getWeather();
   form.reset();
 });
-
 scaleSwitch.addEventListener("click", changeScale);
 
 let temperatures = [...Array.from(document.querySelectorAll(".temperature"))];
