@@ -4,8 +4,6 @@ const closeButton = <HTMLButtonElement>document.querySelector("button");
 const overlay = <HTMLDivElement>document.querySelector("#overlay");
 let modalOpen = false;
 
-console.log(modal);
-
 function toggleErrorModal() {
   if (modalOpen) {
     modal.style.transform = "scale(0)";
