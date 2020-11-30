@@ -4,7 +4,7 @@ const closeButton = <HTMLButtonElement>document.querySelector("button");
 const overlay = <HTMLDivElement>document.querySelector("#overlay");
 let modalOpen = false;
 
-function toggleErrorModal() {
+function toggleErrorModal(): void {
   if (modalOpen) {
     modal.style.transform = "scale(0)";
     overlay.style.opacity = "0";
@@ -23,4 +23,4 @@ closeButton.addEventListener("click", () => {
   overlay.style.opacity = "0";
 });
 
-export { toggleErrorModal, modal, overlay, modalOpen };
+export { toggleErrorModal };

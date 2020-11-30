@@ -1,20 +1,21 @@
-import { toggleErrorModal, modal, overlay, modalOpen } from "./modal";
+import { toggleErrorModal } from "./modal";
 import { changeScale } from "./scalecheck";
 
 const form = <HTMLFormElement>document.querySelector("form");
 const input = <HTMLInputElement>document.querySelector(`input[type="text"]`);
+const weatherCardsContainer = <HTMLDivElement>(
+  document.querySelector(".weather-cards-container")
+);
 const scaleToggleContainer = <HTMLDivElement>(
   document.querySelector(".scale-container")
 );
 const scaleSwitch = <HTMLInputElement>(
   document.querySelector("#temperature-scale")
 );
-const weatherCardsContainer = <HTMLDivElement>(
-  document.querySelector(".weather-cards-container")
-);
 let cities = JSON.parse(localStorage.getItem("cities") || "[]");
 
 displayCards();
+window.addEventListener("load", () => weatherCardsContainer.style.opacity = "1");
 
 class City {
   city: string;
@@ -34,11 +35,11 @@ class City {
   }
 }
 
-function save() {
+function save(): void {
   localStorage.setItem("cities", JSON.stringify(cities));
 }
 
-async function getWeather() {
+async function getWeather(): Promise<void> {
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=1c954fe59dca8548d2eb13416b4f9da3`,
@@ -47,22 +48,19 @@ async function getWeather() {
     const data = await response.json();
 
     createCityCard(data);
-
-    // weatherDisplay.style.display = "block";
     scaleToggleContainer.style.display = "block";
-
     console.log(data);
   } catch {
     toggleErrorModal();
   }
 }
 
-function createCityCard(data: any) {
+function createCityCard(data: any): void {
   const cityAndCountry = `${data["name"]}, ${data["sys"]["country"]}`;
   const realTemperature =
     Math.round(((data["main"]["temp"] - 273.15) * 9) / 5 + 32).toString() +
     "&deg";
-  const icon = `<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${data.weather[0]["icon"]}.svg"`;
+  const icon = `<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${data.weather[0]["icon"]}.svg">`;
   const description = data["weather"][0]["description"];
 
   const cityCard = new City(cityAndCountry, realTemperature, icon, description);
@@ -74,10 +72,14 @@ function createCityCard(data: any) {
   save();
 }
 
-function displayCards() {
+function displayCards(): void {
+  if (cities.length === 0) {
+    weatherCardsContainer.textContent = "hi";
+  } 
+
   weatherCardsContainer.innerHTML = cities
     .map((city: any, i: number) => {
-      return `<div class="display" data-index=${i}>
+      return `<div class="display" id="display" data-index=${i}>
       <span class="close">x</span>
       <h2 class="name">${city.city}</h2>
       <p class="icon">${city.icon}</p>
@@ -87,7 +89,6 @@ function displayCards() {
     })
     .join("");
   const closeIcons = [...Array.from(document.querySelectorAll(".close"))];
-  const weatherDisplay = [...Array.from(document.querySelectorAll(".display"))];
   closeIcons.forEach((icon) =>
     icon.addEventListener("click", (e) => {
       const target = e.target as HTMLElement;
