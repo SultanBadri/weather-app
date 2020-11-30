@@ -166,6 +166,7 @@ h1 {
 
 /********************************* ERROR MODAL *********************************/
 #error-modal-container {
+  pointer-events: none;
   position: absolute;
   top: 50%;
   left: 50%;
