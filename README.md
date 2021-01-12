@@ -1,21 +1,22 @@
 # Weather App
 
-Weather app from the The Odin Project Curriculum.
+### [Live Demo](https://sultanbadri.github.io/weather-app/)
 
-Live Demo: https://sultanbadri.github.io/weather-app/
+![weather_app](https://user-images.githubusercontent.com/46205282/104386607-60520300-54ea-11eb-916e-b204dcecbb05.gif)
 
-### Features:
+#### 📝 Description
+Weather app that uses the OpenWeatherMap API. A JavaScript project from the Odin Project Curriculum.
 
-1. Search cities will appear as cards.
-2. Can change between fahrenheit and celsius.
-3. localStorage saves cards on browser.
-4. Mobile responsive.
-5. Error popup if searched city could not be found.
+#### 💡 Features:
+* Search cities will appear as cards.
+* Can change between fahrenheit and celsius.
+*  localStorage saves cards on browser.
+*  Error popup if searched city could not be found.
+*  Mobile responsive.
 
-### Built with:
-
-- HTML
-- CSS
-- TypeScript
-- Webpack
-- OpenWeatherMap API
+#### 🛠️ Built with:
+*  HTML
+*  CSS
+*  TypeScript
+*  Webpack
+*  OpenWeatherMap API
